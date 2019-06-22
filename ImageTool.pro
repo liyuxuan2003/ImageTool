@@ -26,15 +26,45 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        MainWindow.cpp
+        MainWindow.cpp \
+    LiLibrary/LiEasyLayout.cpp \
+    LiLibrary/LiFileName.cpp \
+    Menu.cpp \
+    FormatMenu.cpp \
+    LiLibrary/LiFixedToLayout.cpp
 
 HEADERS += \
-        MainWindow.h
+        MainWindow.h \
+    LiLibrary/LiEasyLayout.h \
+    LiLibrary/LiFileName.h \
+    Menu.h \
+    FormatMenu.h \
+    LiLibrary/LiFixedToLayout.h
 
 FORMS += \
-        MainWindow.ui
+        MainWindow.ui \
+    Menu.ui \
+    FormatMenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Icon/Connect-3780.PNG \
+    Icon/Crop-3780.PNG \
+    Icon/Exit-3780.PNG \
+    Icon/Format-3780.PNG \
+    Icon/Frame-3780.PNG \
+    Icon/Help-3780.PNG \
+    Icon/MakeGif-3780.PNG \
+    Icon/ProjectIcon-3780.PNG \
+    Icon/UnderDevelop-3780.PNG \
+    Icon/WaterMark-3780.PNG \
+    Icon/Compress-3780.PNG \
+    Icon/MakeIcon-3780.PNG \
+    Icon/Start-3780.PNG
+
+RESOURCES += \
+    Icon.qrc

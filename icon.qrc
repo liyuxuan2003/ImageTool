@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/IconPNG">
+        <file>Icon/Connect-3780.PNG</file>
+        <file>Icon/Crop-3780.PNG</file>
+        <file>Icon/Exit-3780.PNG</file>
+        <file>Icon/Format-3780.PNG</file>
+        <file>Icon/Frame-3780.PNG</file>
+        <file>Icon/Help-3780.PNG</file>
+        <file>Icon/MakeGif-3780.PNG</file>
+        <file>Icon/ProjectIcon-3780.PNG</file>
+        <file>Icon/UnderDevelop-3780.PNG</file>
+        <file>Icon/WaterMark-3780.PNG</file>
+        <file>Icon/Compress-3780.PNG</file>
+        <file>Icon/MakeIcon-3780.PNG</file>
+        <file>Icon/Start-3780.PNG</file>
+    </qresource>
+</RCC>

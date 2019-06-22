@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Menu</class>
+ <widget class="QFrame" name="Menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>675</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>等线</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(64, 66, 68);</string>
+  </property>
+  <widget class="QLabel" name="labelTitle">
+   <property name="geometry">
+    <rect>
+     <x>45</x>
+     <y>30</y>
+     <width>451</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像工具 / Image Tool</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelFormat">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>175</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像格式转换</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonFormat">
+   <property name="geometry">
+    <rect>
+     <x>45</x>
+     <y>115</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Format-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCrop">
+   <property name="geometry">
+    <rect>
+     <x>45</x>
+     <y>245</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Crop-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelCrop">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>305</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像裁剪</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonConnect">
+   <property name="geometry">
+    <rect>
+     <x>45</x>
+     <y>375</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Connect-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelCompress">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>565</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像压缩</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCompress">
+   <property name="geometry">
+    <rect>
+     <x>45</x>
+     <y>505</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Compress-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelConnect">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>435</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像拼接</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelMakeGif">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>565</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>动图制作</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonMakeIcon">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>375</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/MakeIcon-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonMakeGif">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>505</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/MakeGif-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonFrame">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>115</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Frame-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelWaterMark">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>305</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像添加水印</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonWaterMark">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>245</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/WaterMark-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelFrame">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>175</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图像添加边框</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelMakeIcon">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>435</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>图标制作</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelExtraInfo1">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>627</y>
+     <width>401</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Designed and Developed by Li Yuxuan.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelExtraInfo2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>647</y>
+     <width>401</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Copyright © 2019 Li Yuxuan   All Rights Reserved.</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonAbout">
+   <property name="geometry">
+    <rect>
+     <x>1100</x>
+     <y>490</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/ProjectIcon-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelAbout">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>528</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>关于项目</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelExit">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>628</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>退出程序</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonExit">
+   <property name="geometry">
+    <rect>
+     <x>1100</x>
+     <y>590</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/IconPNG/Icon/Exit-3780.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
