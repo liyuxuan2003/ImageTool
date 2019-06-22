@@ -27,7 +27,7 @@ FormatMenu::FormatMenu(QWidget *parent) :
     l2->AddUnit(new QWidget*[2]{ui->pushButtonStart,ui->labelStart},2);
     l2->AddUnit(new QWidget*[2]{ui->pushButtonExit,ui->labelExit},2);
 
-    lf->AddUnit(ui->labelIcon,width(),height(),LiFixedCorner::RightUp);
+    lf->AddUnit(ui->labelIcon,width(),height(),LiFixedCorner::RightTop);
 
     l1->LayoutConfigDone();
     l2->LayoutConfigDone();
@@ -38,6 +38,36 @@ FormatMenu::~FormatMenu()
     delete ui;
 }
 
+void FormatMenu::Init(QStringList sourcePath)
+{
+    this->sourcePath=sourcePath;
+    this->amount=sourcePath.size();
+
+    ui->labelImageAmount->setText("图像数量："+QString::number(amount));
+    ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
+
+    targetPath=StandardDir(QStandardPaths::PicturesLocation);
+    ui->labelOutputPath->setText("输出路径："+StandardDir(QStandardPaths::PicturesLocation));
+
+    format="JPG";
+    suffixName="JPG";
+    filePrefix="";
+    fileSuffix="";
+
+    ui->comboBoxFormat->setCurrentIndex(0);
+    ui->lineEditSuffixName->setText("JPG");
+
+    ui->lineEditPrefix->setText("");
+    ui->lineEditSuffix->setText("");
+
+    ReloadExample();
+}
+
+void FormatMenu::ReloadExample()
+{
+    ui->labelExample->setText("示例："+filePrefix+GetNameByPath(sourcePath[0])+fileSuffix+"."+suffixName);
+}
+
 void FormatMenu::resizeEvent(QResizeEvent * event)
 {
     l1->ResizeWithEasyLayout(width(),height());
@@ -45,3 +75,39 @@ void FormatMenu::resizeEvent(QResizeEvent * event)
     lf->ResizeWithFixedToLayout(width(),height());
 }
 
+void FormatMenu::on_pushButtonOutputPath_clicked()
+{
+    QString dir=QFileDialog::getExistingDirectory(this,"选择输出文件夹",targetPath,QFileDialog::ShowDirsOnly);
+    if(dir=="")
+        return;
+    targetPath=dir;
+    ui->labelOutputPath->setText("输出路径："+targetPath);
+}
+
+void FormatMenu::on_comboBoxFormat_currentIndexChanged(const QString &arg1)
+{
+    format=arg1.right(arg1.size()-arg1.indexOf(".")-1);
+
+    suffixName=format;
+    ui->lineEditSuffixName->setText(format);
+
+    ReloadExample();
+}
+
+void FormatMenu::on_lineEditSuffixName_textChanged(const QString &arg1)
+{
+    suffixName=arg1;
+    ReloadExample();
+}
+
+void FormatMenu::on_lineEditPrefix_textChanged(const QString &arg1)
+{
+    filePrefix=arg1;
+    ReloadExample();
+}
+
+void FormatMenu::on_lineEditSuffix_textChanged(const QString &arg1)
+{
+    fileSuffix=arg1;
+    ReloadExample();
+}

@@ -9,7 +9,7 @@
 class LiFixedCorner
 {
 public:
-    enum FixedCorner{LeftUp,LeftDown,RightUp,RightDown};
+    enum FixedCorner{LeftTop,LeftBottom,RightTop,RightBottom};
 };
 
 class LiFixedToLayoutUnit
@@ -23,8 +23,8 @@ public:
 
     int leftGap;
     int rightGap;
-    int upGap;
-    int downGap;
+    int topGap;
+    int bottomGap;
 
     LiFixedCorner::FixedCorner corner;
 };

@@ -43,4 +43,5 @@ void MainWindow::ShowFormatMenu()
         return;
     HideAllFrame();
     formatMenu->show();
+    formatMenu->Init(files);
 }

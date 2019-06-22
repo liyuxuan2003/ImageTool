@@ -102,7 +102,7 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>图片数量：5张</string>
+    <string>图像数量：5张</string>
    </property>
   </widget>
   <widget class="Line" name="line1">
@@ -265,7 +265,7 @@ selection-color: rgb(255, 255, 255);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>输出图片格式：</string>
+    <string>输出图像格式：</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelSuffixName">
@@ -488,7 +488,7 @@ gridline-color: rgb(64, 66, 68);</string>
    <property name="geometry">
     <rect>
      <x>1010</x>
-     <y>628</y>
+     <y>626</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -526,7 +526,7 @@ gridline-color: rgb(64, 66, 68);</string>
    <property name="geometry">
     <rect>
      <x>1010</x>
-     <y>528</y>
+     <y>526</y>
      <width>81</width>
      <height>21</height>
     </rect>

@@ -14,16 +14,16 @@ void LiFixedToLayout::ResizeWithFixedToLayout(int width,int height)
 {
     for(int i=0;i<fixedToLayout.size();i++)
     {
-        if(fixedToLayout[i]->corner==LiFixedCorner::LeftUp){/*nothing to do*/}
+        if(fixedToLayout[i]->corner==LiFixedCorner::LeftTop){/*nothing to do*/}
 
-        if(fixedToLayout[i]->corner==LiFixedCorner::LeftDown)
-            fixedToLayout[i]->widget->move(fixedToLayout[i]->widget->x(),height-fixedToLayout[i]->downGap);
+        if(fixedToLayout[i]->corner==LiFixedCorner::LeftBottom)
+            fixedToLayout[i]->widget->move(fixedToLayout[i]->widget->x(),height-fixedToLayout[i]->bottomGap);
 
-        if(fixedToLayout[i]->corner==LiFixedCorner::RightUp)
+        if(fixedToLayout[i]->corner==LiFixedCorner::RightTop)
             fixedToLayout[i]->widget->move(width-fixedToLayout[i]->rightGap,fixedToLayout[i]->widget->y());
 
-        if(fixedToLayout[i]->corner==LiFixedCorner::RightDown)
-            fixedToLayout[i]->widget->move(width-fixedToLayout[i]->rightGap,height-fixedToLayout[i]->downGap);
+        if(fixedToLayout[i]->corner==LiFixedCorner::RightBottom)
+            fixedToLayout[i]->widget->move(width-fixedToLayout[i]->rightGap,height-fixedToLayout[i]->bottomGap);
     }
 }
 
@@ -33,8 +33,8 @@ LiFixedToLayoutUnit::LiFixedToLayoutUnit(int id,QWidget* widget,int width,int he
     this->widget=widget;
     this->leftGap=widget->x();
     this->rightGap=width-widget->x();
-    this->upGap=widget->y();
-    this->downGap=height-widget->y();
+    this->topGap=widget->y();
+    this->bottomGap=height-widget->y();
     this->corner=corner;
 }
 

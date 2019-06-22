@@ -2,9 +2,12 @@
 #define FORMATMENU_H
 
 #include <QFrame>
+#include <QFileDialog>
 
 #include <LiLibrary/LiEasyLayout.h>
 #include <LiLibrary/LiFixedToLayout.h>
+
+#include <LiLibrary/LiFileName.h>
 
 namespace Ui {
 class FormatMenu;
@@ -18,8 +21,21 @@ public:
     explicit FormatMenu(QWidget *parent = nullptr);
     ~FormatMenu();
 
+    void Init(QStringList sourcePath);
+
 protected:
     virtual void resizeEvent(QResizeEvent * event);
+
+private slots:
+    void on_pushButtonOutputPath_clicked();
+
+    void on_comboBoxFormat_currentIndexChanged(const QString &arg1);
+
+    void on_lineEditSuffixName_textChanged(const QString &arg1);
+
+    void on_lineEditPrefix_textChanged(const QString &arg1);
+
+    void on_lineEditSuffix_textChanged(const QString &arg1);
 
 private:
     Ui::FormatMenu* ui;
@@ -28,6 +44,18 @@ private:
     LiEasyLayout* l2;
 
     LiFixedToLayout* lf;
+
+    QStringList sourcePath;
+    int amount;
+
+    QString targetPath;
+    QString format;
+    QString suffixName;
+
+    QString filePrefix;
+    QString fileSuffix;
+
+    void ReloadExample();
 };
 
 #endif // FORMATMENU_H

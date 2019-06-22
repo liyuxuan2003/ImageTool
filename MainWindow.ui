@@ -10,6 +10,12 @@
     <height>675</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>675</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>图像工具</string>
   </property>
