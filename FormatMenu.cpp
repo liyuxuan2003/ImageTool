@@ -80,7 +80,7 @@ void FormatMenu::on_pushButtonOutputPath_clicked()
     QString dir=QFileDialog::getExistingDirectory(this,"选择输出文件夹",targetPath,QFileDialog::ShowDirsOnly);
     if(dir=="")
         return;
-    targetPath=dir;
+    targetPath=DirAddSlash(dir);
     ui->labelOutputPath->setText("输出路径："+targetPath);
 }
 
@@ -110,4 +110,14 @@ void FormatMenu::on_lineEditSuffix_textChanged(const QString &arg1)
 {
     fileSuffix=arg1;
     ReloadExample();
+}
+
+void FormatMenu::on_pushButtonExit_clicked()
+{
+    emit(ShowMenu());
+}
+
+void FormatMenu::on_pushButtonStart_clicked()
+{
+    emit(ShowFormatProcess(sourcePath,targetPath,format,suffixName,filePrefix,fileSuffix));
 }

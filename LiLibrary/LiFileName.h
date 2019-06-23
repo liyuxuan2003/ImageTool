@@ -18,6 +18,8 @@ QString ChangeName(QString path,QString name);
 
 QString ChangeFormat(QString path,QString format);
 
+QString DirAddSlash(QString dir);
+
 QString StandardDir(QStandardPaths::StandardLocation dirType);
 
 #endif // LIFILENAME_H

@@ -37,6 +37,10 @@ private slots:
 
     void on_lineEditSuffix_textChanged(const QString &arg1);
 
+    void on_pushButtonExit_clicked();
+
+    void on_pushButtonStart_clicked();
+
 private:
     Ui::FormatMenu* ui;
 
@@ -56,6 +60,10 @@ private:
     QString fileSuffix;
 
     void ReloadExample();
+
+signals:
+    void ShowMenu();
+    void ShowFormatProcess(QStringList sourcePath, QString targetPath, QString format, QString suffixName, QString filePrefix, QString fileSuffix);
 };
 
 #endif // FORMATMENU_H

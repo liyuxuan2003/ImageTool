@@ -38,6 +38,13 @@ QString ChangeFormat(QString path,QString format)
     return GetDirByPath(path)+GetNameByPath(path)+"."+format;
 }
 
+QString DirAddSlash(QString dir)
+{
+    if(dir[dir.size()-1]!="/")
+        dir+="/";
+    return dir;
+}
+
 QString StandardDir(QStandardPaths::StandardLocation dirType)
 {
     return QStandardPaths::writableLocation(dirType);

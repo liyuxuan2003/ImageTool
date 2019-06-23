@@ -15,7 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     formatMenu->move(0,0);
     formatMenu->hide();
 
+    formatProcess=new FormatProcess(this);
+    formatProcess->move(0,0);
+    formatProcess->hide();
+
     connect(menu,SIGNAL(ShowFormatMenu()),this,SLOT(ShowFormatMenu()));
+    connect(formatMenu,SIGNAL(ShowFormatProcess(QStringList,QString,QString,QString,QString,QString)),this,SLOT(ShowFormatProcess(QStringList,QString,QString,QString,QString,QString)));
 }
 
 MainWindow::~MainWindow()
@@ -27,12 +32,14 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     menu->resize(width(),height());
     formatMenu->resize(width(),height());
+    formatProcess->resize(width(),height());
 }
 
 void MainWindow::HideAllFrame()
 {
     menu->hide();
     formatMenu->hide();
+    formatProcess->hide();
 }
 
 void MainWindow::ShowFormatMenu()
@@ -44,4 +51,17 @@ void MainWindow::ShowFormatMenu()
     HideAllFrame();
     formatMenu->show();
     formatMenu->Init(files);
+}
+
+void MainWindow::ShowFormatProcess(QStringList sourcePath, QString targetPath, QString format, QString suffixName, QString filePrefix, QString fileSuffix)
+{
+    HideAllFrame();
+    formatProcess->show();
+    formatProcess->Init(sourcePath,targetPath,format,suffixName,filePrefix,fileSuffix);
+}
+
+void MainWindow::ShowMenu()
+{
+    HideAllFrame();
+    menu->show();
 }

@@ -31,7 +31,9 @@ SOURCES += \
     LiLibrary/LiFileName.cpp \
     Menu.cpp \
     FormatMenu.cpp \
-    LiLibrary/LiFixedToLayout.cpp
+    LiLibrary/LiFixedToLayout.cpp \
+    FormatProcess.cpp \
+    FormatThread.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -39,12 +41,15 @@ HEADERS += \
     LiLibrary/LiFileName.h \
     Menu.h \
     FormatMenu.h \
-    LiLibrary/LiFixedToLayout.h
+    LiLibrary/LiFixedToLayout.h \
+    FormatProcess.h \
+    FormatThread.h
 
 FORMS += \
         MainWindow.ui \
     Menu.ui \
-    FormatMenu.ui
+    FormatMenu.ui \
+    FormatProcess.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
