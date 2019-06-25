@@ -47,7 +47,7 @@ QString DirAddSlash(QString dir)
 
 QString StandardDir(QStandardPaths::StandardLocation dirType)
 {
-    return QStandardPaths::writableLocation(dirType);
+    return DirAddSlash(QStandardPaths::writableLocation(dirType));
 }
 
 

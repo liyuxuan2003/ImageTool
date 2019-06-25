@@ -41,3 +41,8 @@ void Menu::on_pushButtonFormat_clicked()
 {
     emit(ShowFormatMenu());
 }
+
+void Menu::on_pushButtonCrop_clicked()
+{
+    emit(ShowCropMenu());
+}

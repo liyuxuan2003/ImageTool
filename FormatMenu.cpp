@@ -47,7 +47,7 @@ void FormatMenu::Init(QStringList sourcePath)
     ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
 
     targetPath=StandardDir(QStandardPaths::PicturesLocation);
-    ui->labelOutputPath->setText("输出路径："+StandardDir(QStandardPaths::PicturesLocation));
+    ui->labelOutputPath->setText("输出路径："+targetPath);
 
     format="JPG";
     suffixName="JPG";

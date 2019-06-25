@@ -7,8 +7,9 @@
 
 #include <LiLibrary/LiEasyLayout.h>
 
-namespace Ui {
-class Menu;
+namespace Ui
+{
+    class Menu;
 }
 
 class Menu : public QFrame
@@ -25,6 +26,8 @@ protected:
 private slots:
     void on_pushButtonFormat_clicked();
 
+    void on_pushButtonCrop_clicked();
+
 private:
     Ui::Menu* ui;
 
@@ -33,6 +36,8 @@ private:
 
 signals:
     void ShowFormatMenu();
+
+    void ShowCropMenu();
 };
 
 #endif // MENU_H

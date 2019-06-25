@@ -4,11 +4,15 @@
 #include <QMainWindow>
 
 #include "Menu.h"
+
 #include "FormatMenu.h"
 #include "FormatProcess.h"
 
-namespace Ui {
-class MainWindow;
+#include "CropMenu.h"
+
+namespace Ui
+{
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -20,9 +24,12 @@ public:
     ~MainWindow();
 
 public slots:
+    void ShowMenu();
+
     void ShowFormatMenu();
     void ShowFormatProcess(QStringList sourcePath, QString targetPath, QString format, QString suffixName, QString filePrefix, QString fileSuffix);
-    void ShowMenu();
+
+    void ShowCropMenu();
 
 protected:
     virtual void resizeEvent(QResizeEvent * event);
@@ -31,8 +38,11 @@ private:
     Ui::MainWindow* ui;
 
     Menu* menu;
+
     FormatMenu* formatMenu;
     FormatProcess* formatProcess;
+
+    CropMenu* cropMenu;
 
     void HideAllFrame();
 };

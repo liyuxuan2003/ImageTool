@@ -9,8 +9,9 @@
 
 #include <LiLibrary/LiFileName.h>
 
-namespace Ui {
-class FormatMenu;
+namespace Ui
+{
+    class FormatMenu;
 }
 
 class FormatMenu : public QFrame

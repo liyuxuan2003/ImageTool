@@ -13,5 +13,7 @@
         <file>Icon/Compress-3780.PNG</file>
         <file>Icon/MakeIcon-3780.PNG</file>
         <file>Icon/Start-3780.PNG</file>
+        <file>Icon/CropPercent-3780.PNG</file>
+        <file>Icon/CropPixel-3780.PNG</file>
     </qresource>
 </RCC>
