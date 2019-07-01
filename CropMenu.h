@@ -24,6 +24,8 @@ public:
 
     void Init(QStringList sourcePath);
 
+    enum CropMode{PixelMode,PercentModeH,PercentModeV,PercentMode};
+
 protected:
     virtual void resizeEvent(QResizeEvent * event);
 
@@ -52,6 +54,10 @@ private slots:
 
     void on_spinBoxV_valueChanged(int arg1);
 
+    void on_pushButtonStart_clicked();
+
+    void on_pushButtonExit_clicked();
+
 private:
     Ui::CropMenu *ui;
 
@@ -64,7 +70,6 @@ private:
     QStringList sourcePath;
     QString targetPath;
 
-    enum CropMode{PixelMode,PercentModeH,PercentModeV,PercentMode};
     CropMode cropMode;
 
     int valH;
@@ -80,6 +85,10 @@ private:
     void ChangeUnit();
     void SetUiWithValue(int h,int v,int mh,int mv);
     void SetUiWithValue();
+
+signals:
+    void ShowCropProcess(QStringList sourcePath,QString targetPath,int valH,int valV,int valMH,int valMV,CropMenu::CropMode mode);
+    void ShowMenu();
 };
 
 #endif // CROPMENU_H

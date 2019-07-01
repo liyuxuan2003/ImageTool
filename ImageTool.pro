@@ -34,7 +34,10 @@ SOURCES += \
     LiLibrary/LiFixedToLayout.cpp \
     FormatProcess.cpp \
     ProcessThread.cpp \
-    CropMenu.cpp
+    CropMenu.cpp \
+    CropProcess.cpp \
+    CompressMenu.cpp \
+    LiLibrary/LiReadImageInfo.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -45,14 +48,19 @@ HEADERS += \
     LiLibrary/LiFixedToLayout.h \
     FormatProcess.h \
     ProcessThread.h \
-    CropMenu.h
+    CropMenu.h \
+    CropProcess.h \
+    CompressMenu.h \
+    LiLibrary/LiReadImageInfo.h
 
 FORMS += \
         MainWindow.ui \
     Menu.ui \
     FormatMenu.ui \
     FormatProcess.ui \
-    CropMenu.ui
+    CropMenu.ui \
+    CropProcess.ui \
+    CompressMenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -74,7 +82,11 @@ DISTFILES += \
     Icon/MakeIcon-3780.PNG \
     Icon/Start-3780.PNG \
     Icon/CropPercent-3780.PNG \
-    Icon/CropPixel-3780.PNG
+    Icon/CropPixel-3780.PNG \
+    Icon/CropPercentHeight-3780.PNG \
+    Icon/CropPercentWidth-3780.PNG \
+    Icon/CompressPercent-3780.PNG \
+    Icon/CompressPixel-3780.PNG
 
 RESOURCES += \
     Icon.qrc

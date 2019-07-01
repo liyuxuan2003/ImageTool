@@ -46,3 +46,8 @@ void Menu::on_pushButtonCrop_clicked()
 {
     emit(ShowCropMenu());
 }
+
+void Menu::on_pushButtonCompress_clicked()
+{
+    emit(ShowCompressMenu());
+}

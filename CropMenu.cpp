@@ -24,6 +24,7 @@ CropMenu::CropMenu(QWidget *parent) :
     l1->AddElementInUnit(new QWidget*[2]{ui->pushButtonCropPixel,ui->labelCropPixel},2);
     l1->AddElementInUnit(new QWidget*[2]{ui->pushButtonCropPercentH,ui->labelCropPercentH},2);
     l1->AddElementInUnit(new QWidget*[2]{ui->pushButtonCropPercentV,ui->labelCropPercentV},2);
+    l1->AddElementInUnit(new QWidget*[2]{ui->pushButtonCropPercent,ui->labelCropPercent},2);
 
     l1->AddUnit(new QWidget*[3]{ui->labelCropH,ui->spinBoxH,ui->labelUnitH},3);
     l1->AddUnit(new QWidget*[3]{ui->labelCropV,ui->spinBoxV,ui->labelUnitV},3);
@@ -52,6 +53,11 @@ void CropMenu::Init(QStringList sourcePath)
     amount=sourcePath.size();
     this->sourcePath=sourcePath;
     this->targetPath=StandardDir(QStandardPaths::PicturesLocation);
+
+    ui->labelImageAmount->setText("图像数量："+QString::number(amount));
+    ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
+
+    ui->labelOutputPath->setText("输出路径："+targetPath);
 
     cropMode=PixelMode;
     valH=300;
@@ -100,9 +106,9 @@ void CropMenu::ChangeUnit(CropMode mode)
         ui->spinBoxH->setSingleStep(100);
         ui->spinBoxV->setRange(1,100000);
         ui->spinBoxV->setSingleStep(100);
-        ui->spinBoxMH->setRange(0,100000);
+        ui->spinBoxMH->setRange(-100000,100000);
         ui->spinBoxMH->setSingleStep(10);
-        ui->spinBoxMV->setRange(0,100000);
+        ui->spinBoxMV->setRange(-100000,100000);
         ui->spinBoxMV->setSingleStep(10);
     }
     else
@@ -111,9 +117,9 @@ void CropMenu::ChangeUnit(CropMode mode)
         ui->spinBoxH->setSingleStep(1);
         ui->spinBoxV->setRange(1,100);
         ui->spinBoxV->setSingleStep(1);
-        ui->spinBoxMH->setRange(0,100);
+        ui->spinBoxMH->setRange(-100,100);
         ui->spinBoxMH->setSingleStep(1);
-        ui->spinBoxMV->setRange(0,100);
+        ui->spinBoxMV->setRange(-100,100);
         ui->spinBoxMV->setSingleStep(1);
     }
 
@@ -267,4 +273,14 @@ void CropMenu::on_spinBoxV_valueChanged(int arg1)
     if(isRatio==true)
         valH=valV*ratioHeight/ratioWidth;
     SetUiWithValue();
+}
+
+void CropMenu::on_pushButtonStart_clicked()
+{
+    emit(ShowCropProcess(sourcePath,targetPath,valH,valV,valMH,valMV,cropMode));
+}
+
+void CropMenu::on_pushButtonExit_clicked()
+{
+    emit(ShowMenu());
 }

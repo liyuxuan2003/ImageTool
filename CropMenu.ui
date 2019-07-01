@@ -317,7 +317,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/IconPNG/Icon/CropPercent-3780.PNG);</string>
+    <string notr="true">image: url(:/IconPNG/Icon/CropPercentWidth-3780.PNG);</string>
    </property>
    <property name="text">
     <string/>
@@ -799,7 +799,7 @@ color: rgb(255, 255, 255)</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/IconPNG/Icon/CropPercent-3780.PNG);</string>
+    <string notr="true">image: url(:/IconPNG/Icon/CropPercentHeight-3780.PNG);</string>
    </property>
    <property name="text">
     <string/>

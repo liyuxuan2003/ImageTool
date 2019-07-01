@@ -9,6 +9,9 @@
 #include "FormatProcess.h"
 
 #include "CropMenu.h"
+#include "CropProcess.h"
+
+#include "CompressMenu.h"
 
 namespace Ui
 {
@@ -30,6 +33,9 @@ public slots:
     void ShowFormatProcess(QStringList sourcePath, QString targetPath, QString format, QString suffixName, QString filePrefix, QString fileSuffix);
 
     void ShowCropMenu();
+    void ShowCropProcess(QStringList sourcePath,QString targetPath,int valH,int valV,int valMH,int valMV,CropMenu::CropMode mode);
+
+    void ShowCompressMenu();
 
 protected:
     virtual void resizeEvent(QResizeEvent * event);
@@ -43,6 +49,9 @@ private:
     FormatProcess* formatProcess;
 
     CropMenu* cropMenu;
+    CropProcess* cropProcess;
+
+    CompressMenu* compressMenu;
 
     void HideAllFrame();
 };
