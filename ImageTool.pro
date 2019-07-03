@@ -37,7 +37,8 @@ SOURCES += \
     CropMenu.cpp \
     CropProcess.cpp \
     CompressMenu.cpp \
-    LiLibrary/LiReadImageInfo.cpp
+    LiLibrary/LiReadImageInfo.cpp \
+    CompressProcess.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -51,7 +52,8 @@ HEADERS += \
     CropMenu.h \
     CropProcess.h \
     CompressMenu.h \
-    LiLibrary/LiReadImageInfo.h
+    LiLibrary/LiReadImageInfo.h \
+    CompressProcess.h
 
 FORMS += \
         MainWindow.ui \
@@ -60,7 +62,8 @@ FORMS += \
     FormatProcess.ui \
     CropMenu.ui \
     CropProcess.ui \
-    CompressMenu.ui
+    CompressMenu.ui \
+    CompressProcess.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -68,8 +71,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Icon/Connect-3780.PNG \
-    Icon/Crop-3780.PNG \
     Icon/Exit-3780.PNG \
     Icon/Format-3780.PNG \
     Icon/Frame-3780.PNG \
@@ -78,15 +79,50 @@ DISTFILES += \
     Icon/ProjectIcon-3780.PNG \
     Icon/UnderDevelop-3780.PNG \
     Icon/WaterMark-3780.PNG \
-    Icon/Compress-3780.PNG \
     Icon/MakeIcon-3780.PNG \
     Icon/Start-3780.PNG \
     Icon/CropPercent-3780.PNG \
     Icon/CropPixel-3780.PNG \
     Icon/CropPercentHeight-3780.PNG \
     Icon/CropPercentWidth-3780.PNG \
+    Icon/Compress-3780.PNG \
     Icon/CompressPercent-3780.PNG \
-    Icon/CompressPixel-3780.PNG
+    Icon/CompressPixel-3780.PNG \
+    Icon/Connect-3780.PNG \
+    Icon/Crop-3780.PNG \
+    Icon/CropPercent-3780.PNG \
+    Icon/CropPercentHeight-3780.PNG \
+    Icon/CropPercentWidth-3780.PNG \
+    Icon/CropPixel-3780.PNG \
+    Icon/Exit-3780.PNG \
+    Icon/Format-3780.PNG \
+    Icon/Frame-3780.PNG \
+    Icon/Help-3780.PNG \
+    Icon/MakeGif-3780.PNG \
+    Icon/MakeIcon-3780.PNG \
+    Icon/ProjectIcon-3780.PNG \
+    Icon/Start-3780.PNG \
+    Icon/UnderDevelop-3780.PNG \
+    Icon/WaterMark-3780.PNG \
+    Icon/Compress-3780.PNG \
+    Icon/CompressPercent-3780.PNG \
+    Icon/CompressPixel-3780.PNG \
+    Icon/Connect-3780.PNG \
+    Icon/Crop-3780.PNG \
+    Icon/CropPercent-3780.PNG \
+    Icon/CropPercentHeight-3780.PNG \
+    Icon/CropPercentWidth-3780.PNG \
+    Icon/CropPixel-3780.PNG \
+    Icon/Exit-3780.PNG \
+    Icon/Format-3780.PNG \
+    Icon/Frame-3780.PNG \
+    Icon/Help-3780.PNG \
+    Icon/MakeGif-3780.PNG \
+    Icon/MakeIcon-3780.PNG \
+    Icon/ProjectIcon-3780.PNG \
+    Icon/Start-3780.PNG \
+    Icon/UnderDevelop-3780.PNG \
+    Icon/WaterMark-3780.PNG
 
 RESOURCES += \
     Icon.qrc

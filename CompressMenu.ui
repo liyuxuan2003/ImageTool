@@ -14,7 +14,7 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(64, 66, 68);
+   <string notr="true">background-color: rgb(110, 110, 100);
 color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QLabel" name="labelSourcePath">
@@ -77,7 +77,7 @@ color: rgb(255, 255, 255);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(97, 32, 134);
+    <string notr="true">background-color: rgb(253, 195, 99);
 color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">

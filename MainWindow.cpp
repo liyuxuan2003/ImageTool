@@ -31,6 +31,10 @@ MainWindow::MainWindow(QWidget *parent) :
     compressMenu->move(0,0);
     compressMenu->hide();
 
+    compressProcess=new CompressProcess(this);
+    compressProcess->move(0,0);
+    compressProcess->hide();
+
     connect(menu,SIGNAL(ShowFormatMenu()),this,SLOT(ShowFormatMenu()));
     connect(menu,SIGNAL(ShowCropMenu()),this,SLOT(ShowCropMenu()));
     connect(menu,SIGNAL(ShowCompressMenu()),this,SLOT(ShowCompressMenu()));
@@ -42,6 +46,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(cropMenu,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
     connect(cropMenu,SIGNAL(ShowCropProcess(QStringList,QString,int,int,int,int,CropMenu::CropMode)),this,SLOT(ShowCropProcess(QStringList,QString,int,int,int,int,CropMenu::CropMode)));
     connect(cropProcess,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
+
+    connect(compressMenu,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
+    connect(compressMenu,SIGNAL(ShowCompressProcess(QStringList,QString,int,int,int,CompressMode::Mode)),this,SLOT(ShowCompressProcess(QStringList,QString,int,int,int,CompressMode::Mode)));
+    connect(compressProcess,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
 }
 
 MainWindow::~MainWindow()
@@ -57,6 +65,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     cropMenu->resize(width(),height());
     cropProcess->resize(width(),height());
     compressMenu->resize(width(),height());
+    compressProcess->resize(width(),height());
 }
 
 void MainWindow::HideAllFrame()
@@ -67,6 +76,7 @@ void MainWindow::HideAllFrame()
     cropMenu->hide();
     cropProcess->hide();
     compressMenu->hide();
+    compressProcess->hide();
 }
 
 void MainWindow::ShowMenu()
@@ -120,5 +130,12 @@ void MainWindow::ShowCompressMenu()
     HideAllFrame();
     compressMenu->show();
     compressMenu->Init(files);
+}
+
+void MainWindow::ShowCompressProcess(QStringList sourcePath,QString targetPath,int compressWidth,int compressHeight,int compressPercent,CompressMode::Mode mode)
+{
+    HideAllFrame();
+    compressProcess->show();
+    compressProcess->Init(sourcePath,targetPath,compressWidth,compressHeight,compressPercent,mode);
 }
 

@@ -12,6 +12,7 @@
 #include "CropProcess.h"
 
 #include "CompressMenu.h"
+#include "CompressProcess.h"
 
 namespace Ui
 {
@@ -36,6 +37,7 @@ public slots:
     void ShowCropProcess(QStringList sourcePath,QString targetPath,int valH,int valV,int valMH,int valMV,CropMenu::CropMode mode);
 
     void ShowCompressMenu();
+    void ShowCompressProcess(QStringList sourcePath,QString targetPath,int compressWidth,int compressHeight,int compressPercent,CompressMode::Mode mode);
 
 protected:
     virtual void resizeEvent(QResizeEvent * event);
@@ -52,6 +54,7 @@ private:
     CropProcess* cropProcess;
 
     CompressMenu* compressMenu;
+    CompressProcess* compressProcess;
 
     void HideAllFrame();
 };

@@ -16,6 +16,12 @@ namespace Ui
     class CompressMenu;
 }
 
+class CompressMode
+{
+public:
+    enum Mode{Pixel,Percent};
+};
+
 class CompressMenu : public QFrame
 {
     Q_OBJECT
@@ -25,8 +31,6 @@ public:
     ~CompressMenu();
 
     void Init(QStringList sourcePath);
-
-    enum CompressMode{Pixel,Percent};
 
 protected:
     virtual void resizeEvent(QResizeEvent * event);
@@ -43,6 +47,10 @@ private slots:
     void on_spinBoxWidth_valueChanged(int arg1);
 
     void on_spinBoxHeight_valueChanged(int arg1);
+
+    void on_pushButtonStart_clicked();
+
+    void on_pushButtonExit_clicked();
 
 private:
     Ui::CompressMenu *ui;
@@ -65,7 +73,11 @@ private:
     void ChangeToPixelMode();
     void ChangeToPercentMode();
 
-    CompressMode mode;
+    CompressMode::Mode mode;
+
+signals:
+    void ShowCompressProcess(QStringList sourcePath,QString targetPath,int compressWidth,int compressHeight,int compressPercent,CompressMode::Mode mode);
+    void ShowMenu();
 };
 
 #endif // COMPRESSMENU_H

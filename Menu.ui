@@ -20,7 +20,7 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(64, 66, 68);</string>
+   <string notr="true">background-color: rgb(110, 110, 100);</string>
   </property>
   <widget class="QLabel" name="labelTitle">
    <property name="geometry">

@@ -134,13 +134,13 @@ void CompressMenu::ChangeToPercentMode()
 
 void CompressMenu::on_pushButtonPixel_clicked()
 {
-    mode=Pixel;
+    mode=CompressMode::Pixel;
     ChangeToPixelMode();
 }
 
 void CompressMenu::on_pushButtonPercent_clicked()
 {
-    mode=Percent;
+    mode=CompressMode::Percent;
     ChangeToPercentMode();
 }
 
@@ -152,4 +152,14 @@ void CompressMenu::on_spinBoxWidth_valueChanged(int arg1)
 void CompressMenu::on_spinBoxHeight_valueChanged(int arg1)
 {
     compressHeight=arg1;
+}
+
+void CompressMenu::on_pushButtonStart_clicked()
+{
+    emit(ShowCompressProcess(sourcePath,targetPath,compressWidth,compressHeight,compressPercent,mode));
+}
+
+void CompressMenu::on_pushButtonExit_clicked()
+{
+    emit(ShowMenu());
 }
