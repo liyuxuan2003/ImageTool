@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <LiLibrary/LiFileName.h>
+
 #include "Menu.h"
 
 #include "FormatMenu.h"
@@ -13,6 +15,9 @@
 
 #include "CompressMenu.h"
 #include "CompressProcess.h"
+
+#include "ConnectMenu.h"
+#include "ConnectProcess.h"
 
 namespace Ui
 {
@@ -39,6 +44,9 @@ public slots:
     void ShowCompressMenu();
     void ShowCompressProcess(QStringList sourcePath,QString targetPath,int compressWidth,int compressHeight,int compressPercent,CompressMode::Mode mode);
 
+    void ShowConnectMenu();
+    void ShowConnectProcess(QStringList sourcePath,QString targetPath,ConnectMode::Mode mode,int maxSize,int matrixRow,int matrixColumn,QString outputFileName,QString outputFormat);
+
 protected:
     virtual void resizeEvent(QResizeEvent * event);
 
@@ -55,6 +63,9 @@ private:
 
     CompressMenu* compressMenu;
     CompressProcess* compressProcess;
+
+    ConnectMenu* connectMenu;
+    ConnectProcess* connectProcess;
 
     void HideAllFrame();
 };

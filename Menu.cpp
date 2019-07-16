@@ -51,3 +51,8 @@ void Menu::on_pushButtonCompress_clicked()
 {
     emit(ShowCompressMenu());
 }
+
+void Menu::on_pushButtonConnect_clicked()
+{
+    emit(ShowConnectMenu());
+}

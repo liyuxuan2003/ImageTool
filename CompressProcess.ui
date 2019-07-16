@@ -36,7 +36,7 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>正在转换：10/100</string>
+    <string>正在压缩：10/100</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelIcon">
@@ -118,7 +118,7 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>图像裁剪</string>
+    <string>图像压缩</string>
    </property>
   </widget>
   <widget class="QProgressBar" name="progressBar">

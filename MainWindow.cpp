@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QDir dir(StandardDir(QStandardPaths::PicturesLocation));
+    dir.mkdir("ImageToolTemp");
+
     menu=new Menu(this);
     menu->move(0,0);
     menu->show();
@@ -35,9 +38,18 @@ MainWindow::MainWindow(QWidget *parent) :
     compressProcess->move(0,0);
     compressProcess->hide();
 
+    connectMenu=new ConnectMenu(this);
+    connectMenu->move(0,0);
+    connectMenu->hide();
+
+    connectProcess=new ConnectProcess(this);
+    connectProcess->move(0,0);
+    connectProcess->hide();
+
     connect(menu,SIGNAL(ShowFormatMenu()),this,SLOT(ShowFormatMenu()));
     connect(menu,SIGNAL(ShowCropMenu()),this,SLOT(ShowCropMenu()));
     connect(menu,SIGNAL(ShowCompressMenu()),this,SLOT(ShowCompressMenu()));
+    connect(menu,SIGNAL(ShowConnectMenu()),this,SLOT(ShowConnectMenu()));
 
     connect(formatMenu,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
     connect(formatMenu,SIGNAL(ShowFormatProcess(QStringList,QString,QString,QString,QString,QString)),this,SLOT(ShowFormatProcess(QStringList,QString,QString,QString,QString,QString)));
@@ -50,6 +62,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(compressMenu,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
     connect(compressMenu,SIGNAL(ShowCompressProcess(QStringList,QString,int,int,int,CompressMode::Mode)),this,SLOT(ShowCompressProcess(QStringList,QString,int,int,int,CompressMode::Mode)));
     connect(compressProcess,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
+
+    connect(connectMenu,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
+    connect(connectMenu,SIGNAL(ShowConnectProcess(QStringList,QString,ConnectMode::Mode,int,int,int,QString,QString)),this,SLOT(ShowConnectProcess(QStringList,QString,ConnectMode::Mode,int,int,int,QString,QString)));
+    connect(connectProcess,SIGNAL(ShowMenu()),this,SLOT(ShowMenu()));
 }
 
 MainWindow::~MainWindow()
@@ -66,6 +82,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     cropProcess->resize(width(),height());
     compressMenu->resize(width(),height());
     compressProcess->resize(width(),height());
+    connectMenu->resize(width(),height());
+    connectProcess->resize(width(),height());
 }
 
 void MainWindow::HideAllFrame()
@@ -77,6 +95,13 @@ void MainWindow::HideAllFrame()
     cropProcess->hide();
     compressMenu->hide();
     compressProcess->hide();
+    connectMenu->hide();
+    connectProcess->hide();
+
+    QDir dir(StandardDir(QStandardPaths::PicturesLocation)+"ImageToolTemp/");
+    dir.setFilter(QDir::Files);
+    for(int i=0;i<dir.count();i++)
+        dir.remove(dir[i]);
 }
 
 void MainWindow::ShowMenu()
@@ -139,3 +164,20 @@ void MainWindow::ShowCompressProcess(QStringList sourcePath,QString targetPath,i
     compressProcess->Init(sourcePath,targetPath,compressWidth,compressHeight,compressPercent,mode);
 }
 
+void MainWindow::ShowConnectMenu()
+{
+    QStringList files=QFileDialog::getOpenFileNames(this,"请选择图片","D:/",
+        "Images (*.JPG *.JPEG *.PNG *.GIF *.TIF *.TIFF *.BMP *.PPM)");
+    if(files.size()==0)
+        return;
+    HideAllFrame();
+    connectMenu->show();
+    connectMenu->Init(files);
+}
+
+void MainWindow::ShowConnectProcess(QStringList sourcePath,QString targetPath,ConnectMode::Mode mode,int maxSize,int matrixRow,int matrixColumn,QString outputFileName,QString outputFormat)
+{
+    HideAllFrame();
+    connectProcess->show();
+    connectProcess->Init(sourcePath,targetPath,mode,maxSize,matrixRow,matrixColumn,outputFileName,outputFormat);
+}

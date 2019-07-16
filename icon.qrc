@@ -19,5 +19,8 @@
         <file>Icon/CropPercentWidth-3780.PNG</file>
         <file>Icon/CompressPercent-3780.PNG</file>
         <file>Icon/CompressPixel-3780.PNG</file>
+        <file>Icon/ConnectHorizontal-3780.PNG</file>
+        <file>Icon/ConnectMatrix-3780.PNG</file>
+        <file>Icon/ConnectVertical-3780.PNG</file>
     </qresource>
 </RCC>

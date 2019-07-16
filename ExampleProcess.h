@@ -1,7 +1,8 @@
-#ifndef COMPRESSPROCESS_H
-#define COMPRESSPROCESS_H
+#ifndef EXAMPLEPROCESS_H
+#define EXAMPLEPROCESS_H
 
 #include <QFrame>
+#include <QFile>
 #include <QDateTime>
 
 #include <LiLibrary/LiEasyLayout.h>
@@ -9,26 +10,22 @@
 
 #include <LiLibrary/LiFileName.h>
 
-#include <LiLibrary/LiReadImageInfo.h>
-
 #include "ProcessThread.h"
-
-#include "CompressMenu.h"
 
 namespace Ui
 {
-    class CompressProcess;
+    class ExampleProcess;
 }
 
-class CompressProcess : public QFrame
+class ExampleProcess : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit CompressProcess(QWidget *parent = nullptr);
-    ~CompressProcess();
+    explicit ExampleProcess(QWidget *parent = nullptr);
+    ~ExampleProcess();
 
-    void Init(QStringList sourcePath,QString targetPath,int compressWidth,int compressHeight,int compressPercent,CompressMode::Mode mode);
+    void Init(QStringList sourcePath,QString targetPath);
 
     void AddTask(int threadCode);
 
@@ -36,33 +33,24 @@ protected:
     virtual void resizeEvent(QResizeEvent * event);
 
 private:
-    Ui::CompressProcess *ui;
+    Ui::ExampleProcess *ui;
 
     LiEasyLayout* l1;
     LiEasyLayout* l2;
-
     LiFixedToLayout* lf;
-
-    LiReadImageInfo* reader;
 
     ProcessThread** thread;
     int threadAmount=4;
 
-    int frontIndex;
-    int processedAmount;
-
-    int succeedAmount;
-    int failedAmount;
-
-    int* processingIndex;
-
     QStringList sourcePath;
     QString targetPath;
     int amount;
-    int compressWidth;
-    int compressHeight;
-    int compressPercent;
-    CompressMode::Mode mode;
+
+    int frontIndex;
+    int processedAmount;
+    int succeedAmount;
+    int failedAmount;
+    int* processingIndex;
 
 public slots:
     void TaskFinished(int threadCode,ProcessThread::State threadState);
@@ -74,4 +62,4 @@ signals:
     void ShowMenu();
 };
 
-#endif // COMPRESSPROCESS_H
+#endif // EXAMPLEPROCESS_H

@@ -30,6 +30,8 @@ private slots:
 
     void on_pushButtonCompress_clicked();
 
+    void on_pushButtonConnect_clicked();
+
 private:
     Ui::Menu* ui;
 
@@ -42,6 +44,8 @@ signals:
     void ShowCropMenu();
 
     void ShowCompressMenu();
+
+    void ShowConnectMenu();
 };
 
 #endif // MENU_H

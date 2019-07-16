@@ -38,7 +38,11 @@ SOURCES += \
     CropProcess.cpp \
     CompressMenu.cpp \
     LiLibrary/LiReadImageInfo.cpp \
-    CompressProcess.cpp
+    CompressProcess.cpp \
+    ConnectMenu.cpp \
+    ConnectProcess.cpp \
+    ExampleProcess.cpp \
+    ConnectThread.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -53,7 +57,11 @@ HEADERS += \
     CropProcess.h \
     CompressMenu.h \
     LiLibrary/LiReadImageInfo.h \
-    CompressProcess.h
+    CompressProcess.h \
+    ConnectMenu.h \
+    ConnectProcess.h \
+    ExampleProcess.h \
+    ConnectThread.h
 
 FORMS += \
         MainWindow.ui \
@@ -63,7 +71,10 @@ FORMS += \
     CropMenu.ui \
     CropProcess.ui \
     CompressMenu.ui \
-    CompressProcess.ui
+    CompressProcess.ui \
+    ConnectMenu.ui \
+    ConnectProcess.ui \
+    ExampleProcess.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -122,7 +133,10 @@ DISTFILES += \
     Icon/ProjectIcon-3780.PNG \
     Icon/Start-3780.PNG \
     Icon/UnderDevelop-3780.PNG \
-    Icon/WaterMark-3780.PNG
+    Icon/WaterMark-3780.PNG \
+    Icon/ConnectHorizontal-3780.PNG \
+    Icon/ConnectMatrix-3780.PNG \
+    Icon/ConnectVertical-3780.PNG
 
 RESOURCES += \
     Icon.qrc
