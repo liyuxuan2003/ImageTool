@@ -31,7 +31,7 @@ CompressMenu::CompressMenu(QWidget *parent) :
 
     l1->AddUnit(new QWidget*[3]{ui->labelWidth,ui->spinBoxWidth,ui->labelPxW},3);
     l1->AddUnit(new QWidget*[3]{ui->labelHeight,ui->spinBoxHeight,ui->labelPxH},3);
-    l1->AddUnit(ui->labelWarning);
+    l1->AddUnit(new QWidget*[2]{ui->labelRatioCrash,ui->comboBoxRatioCrash},2);
 
     l2->AddUnit(new QWidget*[2]{ui->pushButtonStart,ui->labelStart},2);
     l2->AddUnit(new QWidget*[2]{ui->pushButtonExit,ui->labelExit},2);
@@ -50,7 +50,7 @@ CompressMenu::~CompressMenu()
 void CompressMenu::Init(QStringList sourcePath)
 {
     this->sourcePath=sourcePath;
-    this->targetPath=StandardDir(QStandardPaths::PicturesLocation);
+    this->targetPath=GetDirByPath(sourcePath[0]);
 
     ui->labelImageAmount->setText("图像数量："+QString::number(sourcePath.size()));
     ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
@@ -98,6 +98,9 @@ void CompressMenu::on_spinBoxPercent_valueChanged(int arg1)
 
 void CompressMenu::ChangeToPixelMode()
 {
+    mode=CompressMode::PixelWidth;
+    ui->comboBoxRatioCrash->setCurrentIndex(0);
+
     ui->labelCompressPercent->hide();
     ui->spinBoxPercent->hide();
     ui->labelPercent->hide();
@@ -111,11 +114,14 @@ void CompressMenu::ChangeToPixelMode()
     ui->labelHeight->show();
     ui->spinBoxHeight->show();
     ui->labelPxH->show();
-    ui->labelWarning->show();
+    ui->labelRatioCrash->show();
+    ui->comboBoxRatioCrash->show();
 }
 
 void CompressMenu::ChangeToPercentMode()
 {
+    mode=CompressMode::Percent;
+
     ui->labelCompressPercent->show();
     ui->spinBoxPercent->show();
     ui->labelPercent->show();
@@ -129,18 +135,17 @@ void CompressMenu::ChangeToPercentMode()
     ui->labelHeight->hide();
     ui->spinBoxHeight->hide();
     ui->labelPxH->hide();
-    ui->labelWarning->hide();
+    ui->labelRatioCrash->hide();
+    ui->comboBoxRatioCrash->hide();
 }
 
 void CompressMenu::on_pushButtonPixel_clicked()
 {
-    mode=CompressMode::Pixel;
     ChangeToPixelMode();
 }
 
 void CompressMenu::on_pushButtonPercent_clicked()
 {
-    mode=CompressMode::Percent;
     ChangeToPercentMode();
 }
 
@@ -162,4 +167,14 @@ void CompressMenu::on_pushButtonStart_clicked()
 void CompressMenu::on_pushButtonExit_clicked()
 {
     emit(ShowMenu());
+}
+
+void CompressMenu::on_comboBoxRatioCrash_currentIndexChanged(const QString &arg1)
+{
+    if(arg1=="以水平边为基准")
+        mode=CompressMode::PixelWidth;
+    if(arg1=="以垂直边为基准")
+        mode=CompressMode::PixelHeight;
+    if(arg1=="忽略比例并强制变形")
+        mode=CompressMode::PixelIgnore;
 }

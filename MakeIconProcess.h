@@ -1,5 +1,5 @@
-#ifndef EXAMPLEPROCESS_H
-#define EXAMPLEPROCESS_H
+#ifndef MAKEICONPROCESS_H
+#define MAKEICONPROCESS_H
 
 #include <QFrame>
 
@@ -11,22 +11,24 @@
 
 #include <LiLibrary/LiFileName.h>
 
+#include <vector>
+
 #include "ProcessThread.h"
 
 namespace Ui
 {
-    class ExampleProcess;
+    class MakeIconProcess;
 }
 
-class ExampleProcess : public QFrame
+class MakeIconProcess : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit ExampleProcess(QWidget *parent = nullptr);
-    ~ExampleProcess();
+    explicit MakeIconProcess(QWidget *parent = nullptr);
+    ~MakeIconProcess();
 
-    void Init(QStringList sourcePath,QString targetPath);
+    void Init(QStringList sourcePath,QString targetPath,bool* size);
 
     void AddTask(int threadCode);
 
@@ -34,7 +36,7 @@ protected:
     virtual void resizeEvent(QResizeEvent * event);
 
 private:
-    Ui::ExampleProcess *ui;
+    Ui::MakeIconProcess *ui;
 
     LiEasyLayout* l1;
     LiEasyLayout* l2;
@@ -53,6 +55,8 @@ private:
     int failedAmount;
     int* processingIndex;
 
+    std::vector<int> size;
+
 public slots:
     void TaskFinished(int threadCode,ProcessThread::State threadState);
 
@@ -65,4 +69,4 @@ signals:
     void ShowMenu();
 };
 
-#endif // EXAMPLEPROCESS_H
+#endif // MAKEICONPROCESS_H

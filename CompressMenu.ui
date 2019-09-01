@@ -653,12 +653,12 @@ color: rgb(255, 255, 255)</string>
     <number>300</number>
    </property>
   </widget>
-  <widget class="QLabel" name="labelWarning">
+  <widget class="QLabel" name="labelRatioCrash">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>620</y>
-     <width>591</width>
+     <width>291</width>
      <height>20</height>
     </rect>
    </property>
@@ -672,8 +672,45 @@ color: rgb(255, 255, 255)</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>警告：该模式下若原始图片的比例不符合设置的比例，可能会导致图像变形！</string>
+    <string>当设置的长宽比于照片的比例冲突时：</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxRatioCrash">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>615</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(253, 195, 99);
+color: rgb(255, 255, 255);
+background-color: rgb(253, 195, 99);
+selection-color: rgb(255, 255, 255);</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>以水平边为基准</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>以垂直边为基准</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>忽略比例并强制变形</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

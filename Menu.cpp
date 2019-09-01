@@ -56,3 +56,8 @@ void Menu::on_pushButtonConnect_clicked()
 {
     emit(ShowConnectMenu());
 }
+
+void Menu::on_pushButtonMakeIcon_clicked()
+{
+    emit(ShowMakeIconMenu());
+}

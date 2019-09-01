@@ -250,6 +250,28 @@ color: rgb(255, 255, 255);</string>
     <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButtonOpen">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>600</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(253, 195, 99);</string>
+   </property>
+   <property name="text">
+    <string>打开文件夹</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

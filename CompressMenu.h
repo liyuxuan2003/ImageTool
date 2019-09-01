@@ -19,7 +19,7 @@ namespace Ui
 class CompressMode
 {
 public:
-    enum Mode{Pixel,Percent};
+    enum Mode{PixelWidth,PixelHeight,PixelIgnore,Percent};
 };
 
 class CompressMenu : public QFrame
@@ -51,6 +51,8 @@ private slots:
     void on_pushButtonStart_clicked();
 
     void on_pushButtonExit_clicked();
+
+    void on_comboBoxRatioCrash_currentIndexChanged(const QString &arg1);
 
 private:
     Ui::CompressMenu *ui;

@@ -51,8 +51,9 @@ CropMenu::~CropMenu()
 void CropMenu::Init(QStringList sourcePath)
 {
     amount=sourcePath.size();
+
     this->sourcePath=sourcePath;
-    this->targetPath=StandardDir(QStandardPaths::PicturesLocation);
+    this->targetPath=GetDirByPath(sourcePath[0]);
 
     ui->labelImageAmount->setText("图像数量："+QString::number(amount));
     ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
@@ -68,8 +69,8 @@ void CropMenu::Init(QStringList sourcePath)
     ratioWidth=3;
     ratioHeight=2;
 
-    ChangeUnit();
-    SetUiWithValue();
+    ChangeMode();
+    SetValue();
 
     ui->checkBoxRatio->setCheckState(Qt::Checked);
 }
@@ -90,18 +91,17 @@ void CropMenu::on_pushButtonOutputPath_clicked()
     ui->labelOutputPath->setText("输出路径："+targetPath);
 }
 
-void CropMenu::ChangeUnit()
+void CropMenu::ChangeMode()
 {
-    ChangeUnit(cropMode);
+    ChangeMode(cropMode);
 }
 
-void CropMenu::ChangeUnit(CropMode mode)
+void CropMenu::ChangeMode(CropMode mode)
 {
     cropMode=mode;
-    QString unitName="";
     if(cropMode==PixelMode)
-    {
-        unitName="px";
+    {   
+        SetUnit("px","px","px","px");
         ui->spinBoxH->setRange(1,100000);
         ui->spinBoxH->setSingleStep(100);
         ui->spinBoxV->setRange(1,100000);
@@ -121,35 +121,41 @@ void CropMenu::ChangeUnit(CropMode mode)
         ui->spinBoxMH->setSingleStep(1);
         ui->spinBoxMV->setRange(-100,100);
         ui->spinBoxMV->setSingleStep(1);
+        if(cropMode==PercentMode)
+            SetUnit("%h","%v","%h","%v");
+        if(cropMode==PercentModeH)
+            SetUnit("%h","%h","%h","%h");
+        if(cropMode==PercentModeV)
+            SetUnit("%v","%v","%v","%v");
     }
 
-    if(cropMode==PercentModeH)
-        unitName="%H";
-    if(cropMode==PercentModeV)
-        unitName="%V";
+    if(cropMode==PercentMode)
+    {
+        ui->checkBoxRatio->blockSignals(true);
+        ui->checkBoxRatio->setCheckState(Qt::Unchecked);
+        ui->checkBoxRatio->blockSignals(false);
 
-    if(cropMode!=PercentMode)
-    {
-        ui->labelUnitH->setText(unitName);
-        ui->labelUnitV->setText(unitName);
-        ui->labelUnitMH->setText(unitName);
-        ui->labelUnitMV->setText(unitName);
+        on_checkBoxRatio_stateChanged(Qt::Unchecked);
+        ui->checkBoxRatio->setDisabled(true);
     }
-    else if(cropMode==PercentMode)
-    {
-        ui->labelUnitH->setText("%H");
-        ui->labelUnitV->setText("%V");
-        ui->labelUnitMH->setText("%H");
-        ui->labelUnitMV->setText("%V");
-    }
+    else
+        ui->checkBoxRatio->setEnabled(true);
 }
 
-void CropMenu::SetUiWithValue()
+void CropMenu::SetUnit(QString a,QString b,QString c,QString d)
 {
-    SetUiWithValue(valH,valV,valMH,valMV);
+    ui->labelUnitH->setText(a);
+    ui->labelUnitV->setText(b);
+    ui->labelUnitMH->setText(c);
+    ui->labelUnitMV->setText(d);
 }
 
-void CropMenu::SetUiWithValue(int h,int v,int mh,int mv)
+void CropMenu::SetValue()
+{
+    SetValue(valH,valV,valMH,valMV);
+}
+
+void CropMenu::SetValue(int h,int v,int mh,int mv)
 {
     valH=h;
     valV=v;
@@ -182,39 +188,32 @@ void CropMenu::on_pushButtonCropPixel_clicked()
 {
     if(cropMode==PixelMode)
         return;
-    ChangeUnit(PixelMode);
-    SetUiWithValue(300,300/ratioWidth*ratioHeight,0,0);
+    ChangeMode(PixelMode);
+    SetValue(300,300/ratioWidth*ratioHeight,0,0);
 }
 
 void CropMenu::on_pushButtonCropPercentH_clicked()
 {
     if(cropMode==PercentModeH)
         return;
-    ChangeUnit(PercentModeH);
-    SetUiWithValue(60,60/ratioWidth*ratioHeight,0,0);
+    ChangeMode(PercentModeH);
+    SetValue(60,60/ratioWidth*ratioHeight,0,0);
 }
 
 void CropMenu::on_pushButtonCropPercentV_clicked()
 {
     if(cropMode==PercentModeV)
         return;
-    ChangeUnit(PercentModeV);
-    SetUiWithValue(60*ratioHeight/ratioWidth,60,0,0);
+    ChangeMode(PercentModeV);
+    SetValue(60*ratioHeight/ratioWidth,60,0,0);
 }
 
 void CropMenu::on_pushButtonCropPercent_clicked()
 {
     if(cropMode==PercentMode)
         return;
-    ChangeUnit(PercentMode);
-    SetUiWithValue(50,50,0,0);
-
-    ui->checkBoxRatio->blockSignals(true);
-    ui->checkBoxRatio->setCheckState(Qt::Unchecked);
-    ui->checkBoxRatio->blockSignals(false);
-
-    on_checkBoxRatio_stateChanged(Qt::Unchecked);
-    ui->checkBoxRatio->setDisabled(true);
+    ChangeMode(PercentMode);
+    SetValue(50,50,0,0);
 }
 
 void CropMenu::on_spinBoxMH_valueChanged(int arg1)
@@ -235,7 +234,7 @@ void CropMenu::on_checkBoxRatio_stateChanged(int arg1)
         ui->spinBoxWidth->setEnabled(true);
         ui->spinBoxHeight->setEnabled(true);
         valV=valH/ratioWidth*ratioHeight;
-        SetUiWithValue();
+        SetValue();
     }
     if(arg1==Qt::Unchecked)
     {
@@ -249,14 +248,14 @@ void CropMenu::on_spinBoxWidth_valueChanged(int arg1)
 {
     ratioWidth=arg1;
     valV=valH/ratioWidth*ratioHeight;
-    SetUiWithValue();
+    SetValue();
 }
 
 void CropMenu::on_spinBoxHeight_valueChanged(int arg1)
 {
     ratioHeight=arg1;
     valV=valH/ratioWidth*ratioHeight;
-    SetUiWithValue();
+    SetValue();
 }
 
 void CropMenu::on_spinBoxH_valueChanged(int arg1)
@@ -264,15 +263,15 @@ void CropMenu::on_spinBoxH_valueChanged(int arg1)
     valH=arg1;
     if(isRatio==true)
         valV=valH/ratioWidth*ratioHeight;
-    SetUiWithValue();
+    SetValue();
 }
 
 void CropMenu::on_spinBoxV_valueChanged(int arg1)
 {
     valV=arg1;
     if(isRatio==true)
-        valH=valV*ratioHeight/ratioWidth;
-    SetUiWithValue();
+        valH=valV/ratioHeight*ratioWidth;
+    SetValue();
 }
 
 void CropMenu::on_pushButtonStart_clicked()

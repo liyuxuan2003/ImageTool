@@ -2,8 +2,10 @@
 #define CROPPROCESS_H
 
 #include <QFrame>
+
 #include <QFile>
 #include <QDateTime>
+#include <QDesktopServices>
 
 #include <LiLibrary/LiEasyLayout.h>
 #include <LiLibrary/LiFixedToLayout.h>
@@ -75,6 +77,8 @@ private slots:
     void ProcessDone(int exitCode, QProcess::ExitStatus exitStatus);
 
     void on_pushButtonBack_clicked();
+
+    void on_pushButtonOpen_clicked();
 
 signals:
     void ShowMenu();

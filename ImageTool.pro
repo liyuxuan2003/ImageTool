@@ -42,7 +42,10 @@ SOURCES += \
     ConnectMenu.cpp \
     ConnectProcess.cpp \
     ExampleProcess.cpp \
-    ConnectThread.cpp
+    ConnectThread.cpp \
+    ExampleMenu.cpp \
+    MakeIconMenu.cpp \
+    MakeIconProcess.cpp
 
 HEADERS += \
         MainWindow.h \
@@ -61,7 +64,10 @@ HEADERS += \
     ConnectMenu.h \
     ConnectProcess.h \
     ExampleProcess.h \
-    ConnectThread.h
+    ConnectThread.h \
+    ExampleMenu.h \
+    MakeIconMenu.h \
+    MakeIconProcess.h
 
 FORMS += \
         MainWindow.ui \
@@ -74,7 +80,10 @@ FORMS += \
     CompressProcess.ui \
     ConnectMenu.ui \
     ConnectProcess.ui \
-    ExampleProcess.ui
+    ExampleProcess.ui \
+    ExampleMenu.ui \
+    MakeIconMenu.ui \
+    MakeIconProcess.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -481,7 +481,7 @@ color: rgb(255, 255, 255)</string>
   <widget class="QLabel" name="labelUnitSymbol">
    <property name="geometry">
     <rect>
-     <x>830</x>
+     <x>651</x>
      <y>530</y>
      <width>16</width>
      <height>21</height>
@@ -516,13 +516,13 @@ color: rgb(255, 255, 255)</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>矩阵排列方式（水平方向数量*垂直方向数量）：</string>
+    <string>矩阵排列方式（行*列）：</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBoxImgInRow">
    <property name="geometry">
     <rect>
-     <x>744</x>
+     <x>565</x>
      <y>521</y>
      <width>81</width>
      <height>31</height>
@@ -556,7 +556,7 @@ color: rgb(255, 255, 255)</string>
   <widget class="QSpinBox" name="spinBoxImgInColumn">
    <property name="geometry">
     <rect>
-     <x>849</x>
+     <x>670</x>
      <y>520</y>
      <width>81</width>
      <height>31</height>

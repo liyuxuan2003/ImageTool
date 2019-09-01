@@ -23,7 +23,7 @@ ConnectProcess::ConnectProcess(QWidget *parent) :
     l1->AddUnit(ui->labelProcessDone);
     l1->AddUnit(ui->labelSummary);
     l1->AddUnit(ui->labelBackInfo);
-    l1->AddUnit(ui->pushButtonBack);
+    l1->AddUnit(new QWidget*[2]{ui->pushButtonBack,ui->pushButtonOpen},2);
 
     lf->AddUnit(ui->labelIcon,width(),height(),LiFixedCorner::RightTop);
 
@@ -66,6 +66,7 @@ void ConnectProcess::Init(QStringList sourcePath,QString targetPath,ConnectMode:
     ui->labelSummary->hide();
     ui->labelBackInfo->hide();
     ui->pushButtonBack->hide();
+    ui->pushButtonOpen->hide();
 
     if(QFile::exists(targetPath+outputFileName+"."+outputFormat)==true)
     {
@@ -92,6 +93,7 @@ void ConnectProcess::ProcessDone(bool isSucceeded)
     ui->labelSummary->show();
     ui->labelBackInfo->show();
     ui->pushButtonBack->show();
+    ui->pushButtonOpen->show();
 
     if(isSucceeded==true)
         ui->labelSummary->setText("ImageTool成功完成拼接！");
@@ -102,4 +104,10 @@ void ConnectProcess::ProcessDone(bool isSucceeded)
 void ConnectProcess::on_pushButtonBack_clicked()
 {
     emit(ShowMenu());
+}
+
+void ConnectProcess::on_pushButtonOpen_clicked()
+{
+    QString url=targetPath;
+    QDesktopServices::openUrl("file:"+url);
 }

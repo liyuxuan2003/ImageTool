@@ -2,8 +2,10 @@
 #define CONNECTPROCESS_H
 
 #include <QFrame>
+
 #include <QFile>
 #include <QDateTime>
+#include <QDesktopServices>
 
 #include <LiLibrary/LiEasyLayout.h>
 #include <LiLibrary/LiFixedToLayout.h>
@@ -60,6 +62,8 @@ public slots:
 
 private slots:
     void on_pushButtonBack_clicked();
+
+    void on_pushButtonOpen_clicked();
 
 signals:
     void ShowMenu();

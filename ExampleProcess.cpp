@@ -28,7 +28,7 @@ ExampleProcess::ExampleProcess(QWidget *parent) :
     l1->AddUnit(ui->labelProcessDone);
     l1->AddUnit(ui->labelSummary);
     l1->AddUnit(ui->labelBackInfo);
-    l1->AddUnit(ui->pushButtonBack);
+    l1->AddUnit(new QWidget*[2]{ui->pushButtonBack,ui->pushButtonOpen},2);
 
     lf->AddUnit(ui->labelIcon,width(),height(),LiFixedCorner::RightTop);
 
@@ -160,4 +160,10 @@ void ExampleProcess::AddTask(int threadCode)
 void ExampleProcess::on_pushButtonBack_clicked()
 {
     emit(ShowMenu());
+}
+
+void ExampleProcess::on_pushButtonOpen_clicked()
+{
+    QString url=targetPath;
+    QDesktopServices::openUrl(QUrl(url));
 }

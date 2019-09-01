@@ -32,6 +32,8 @@ private slots:
 
     void on_pushButtonConnect_clicked();
 
+    void on_pushButtonMakeIcon_clicked();
+
 private:
     Ui::Menu* ui;
 
@@ -46,6 +48,10 @@ signals:
     void ShowCompressMenu();
 
     void ShowConnectMenu();
+
+    void ShowMakeGifMenu();
+
+    void ShowMakeIconMenu();
 };
 
 #endif // MENU_H

@@ -81,10 +81,12 @@ private:
     int ratioWidth;
     int ratioHeight;
 
-    void ChangeUnit(CropMode mode);
-    void ChangeUnit();
-    void SetUiWithValue(int h,int v,int mh,int mv);
-    void SetUiWithValue();
+    void ChangeMode(CropMode mode);
+    void ChangeMode();
+    void SetValue(int h,int v,int mh,int mv);
+    void SetValue();
+
+    void SetUnit(QString a,QString b,QString c,QString d);
 
 signals:
     void ShowCropProcess(QStringList sourcePath,QString targetPath,int valH,int valV,int valMH,int valMV,CropMenu::CropMode mode);

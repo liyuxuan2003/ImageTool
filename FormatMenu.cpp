@@ -41,12 +41,13 @@ FormatMenu::~FormatMenu()
 void FormatMenu::Init(QStringList sourcePath)
 {
     this->sourcePath=sourcePath;
+    this->targetPath=GetDirByPath(sourcePath[0]);
+
     this->amount=sourcePath.size();
 
     ui->labelImageAmount->setText("图像数量："+QString::number(amount));
     ui->labelSourcePath->setText("图像源路径："+GetDirByPath(sourcePath[0]));
 
-    targetPath=StandardDir(QStandardPaths::PicturesLocation);
     ui->labelOutputPath->setText("输出路径："+targetPath);
 
     format="JPG";

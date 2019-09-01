@@ -19,6 +19,9 @@
 #include "ConnectMenu.h"
 #include "ConnectProcess.h"
 
+#include "MakeIconMenu.h"
+#include "MakeIconProcess.h"
+
 namespace Ui
 {
     class MainWindow;
@@ -47,6 +50,9 @@ public slots:
     void ShowConnectMenu();
     void ShowConnectProcess(QStringList sourcePath,QString targetPath,ConnectMode::Mode mode,int maxSize,int matrixRow,int matrixColumn,QString outputFileName,QString outputFormat);
 
+    void ShowMakeIconMenu();
+    void ShowMakeIconProcess(QStringList sourcePath,QString targetPath,bool* size);
+
 protected:
     virtual void resizeEvent(QResizeEvent * event);
 
@@ -66,6 +72,9 @@ private:
 
     ConnectMenu* connectMenu;
     ConnectProcess* connectProcess;
+
+    MakeIconMenu* makeIconMenu;
+    MakeIconProcess* makeIconProcess;
 
     void HideAllFrame();
 };

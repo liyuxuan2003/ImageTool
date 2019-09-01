@@ -30,7 +30,7 @@ CompressProcess::CompressProcess(QWidget *parent) :
     l1->AddUnit(ui->labelProcessDone);
     l1->AddUnit(ui->labelSummary);
     l1->AddUnit(ui->labelBackInfo);
-    l1->AddUnit(ui->pushButtonBack);
+    l1->AddUnit(new QWidget*[2]{ui->pushButtonBack,ui->pushButtonOpen},2);
 
     lf->AddUnit(ui->labelIcon,width(),height(),LiFixedCorner::RightTop);
 
@@ -79,6 +79,7 @@ void CompressProcess::Init(QStringList sourcePath,QString targetPath,int compres
     ui->labelSummary->hide();
     ui->labelBackInfo->hide();
     ui->pushButtonBack->hide();
+    ui->pushButtonOpen->hide();
 
     ui->labelProcessNum->setText("正在处理："+QString::number(processedAmount)+"/"+QString::number(amount));
     ui->progressBar->setValue(0);
@@ -110,23 +111,16 @@ void CompressProcess::AddTask(int threadCode)
     }
     else
     {
-        QString w="0";
-        QString h="0";
-        if(mode==CompressMode::Pixel)
-        {
-            w=QString::number(compressWidth);
-            h=QString::number(compressHeight);
-        }
+        QString command;
+        if(mode==CompressMode::PixelWidth)
+            command="magick convert \""+source+"\" -resize "+QString::number(compressWidth)+" \""+target+"\"";
+        if(mode==CompressMode::PixelHeight)
+            command="magick convert \""+source+"\" -resize x"+QString::number(compressHeight)+" \""+target+"\"";
+        if(mode==CompressMode::PixelIgnore)
+            command="magick convert \""+source+"\" -resize "+QString::number(compressWidth)+"x"+QString::number(compressHeight)+"! \""+target+"\"";
         if(mode==CompressMode::Percent)
-        {
-            int inpw=0;
-            int inph=0;
-            reader->ReadWidthAndHeight(source,inpw,inph);
-            w=QString::number(inpw*compressPercent/100);
-            h=QString::number(inph*compressPercent/100);
-        }
+            command="magick convert \""+source+"\" -resize "+QString::number(compressPercent)+"% \""+target+"\"";
 
-        QString command="magick convert \""+source+"\" -resize "+w+"x"+h+" \""+target+"\"";
         command.replace("/","\\");
         thread[threadCode]->SetTask(command);
         thread[threadCode]->start();
@@ -168,6 +162,7 @@ void CompressProcess::TaskFinished(int threadCode,ProcessThread::State threadSta
         ui->labelSummary->show();
         ui->labelBackInfo->show();
         ui->pushButtonBack->show();
+        ui->pushButtonOpen->show();
         ui->labelSummary->setText("ImageTool共处理了"+QString::number(amount)+"张图像，成功"+QString::number(succeedAmount)+"张，失败"+QString::number(failedAmount)+"张。");
         QString t2=QDateTime::currentDateTime().toString("hh:mm:ss");
         ui->plainTextEdit->appendPlainText(t2+"  "+"全部图像处理完毕！");
@@ -180,4 +175,10 @@ void CompressProcess::TaskFinished(int threadCode,ProcessThread::State threadSta
 void CompressProcess::on_pushButtonBack_clicked()
 {
     emit(ShowMenu());
+}
+
+void CompressProcess::on_pushButtonOpen_clicked()
+{
+    QString url=targetPath;
+    QDesktopServices::openUrl("file:"+url);
 }
